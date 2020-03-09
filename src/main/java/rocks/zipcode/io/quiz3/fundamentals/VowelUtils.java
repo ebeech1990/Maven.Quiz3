@@ -38,7 +38,7 @@ public class VowelUtils {
 
 
     public static Boolean startsWithVowel(String word) {
-        List<Character> vowels = new ArrayList<>(Arrays.asList('a','e','i','o','u','y'));
+        List<Character> vowels = new ArrayList<>(Arrays.asList('a','e','i','o','u'));
         word = word.toLowerCase();
         for (int i = 0; i < vowels.size(); i++) {
             if(word.charAt(0)==vowels.get(i)){
@@ -49,9 +49,9 @@ public class VowelUtils {
     }
 
     public static Boolean isVowel(Character character) {
-        List<Character> vowels = new ArrayList<>(Arrays.asList('a','e','i','o','u','y'));
+        List<Character> vowels = new ArrayList<>(Arrays.asList('a','e','i','o','u'));
         String s = character.toString().toLowerCase();
-        for (int i = 0; i < vowels.size()-1; i++) {{
+        for (int i = 0; i < vowels.size(); i++) {{
             if(s.equals(vowels.get(i).toString())){
                 return true;
             }

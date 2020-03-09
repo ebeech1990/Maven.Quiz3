@@ -9,30 +9,53 @@ import java.util.List;
  */
 public class PigLatinGenerator {
     public String translate(String str) {
-        StringBuilder sb = new StringBuilder(str);
+
         List<String> list = new ArrayList<>();
         String[] words = str.split(" ");
         list.addAll(Arrays.asList(words));
         List<String> newList = new ArrayList<>();
-            for(String s : list){
-                if(VowelUtils.isVowel(s.charAt(0))){
-                    newList.add(sb.append("way").toString());
-                }
-                else if(!VowelUtils.isVowel(s.charAt(0))){
-                    for(Character c : s.toCharArray()){
-                        if(!VowelUtils.isVowel(c)){
-                            sb.append(c);
+        String temp = "";
+        for(String s : list){
+            StringBuilder sb = new StringBuilder(s);
+            if(VowelUtils.startsWithVowel(s)){
+               temp = sb.append("way").toString();
+               newList.add(temp);
+            }
+            else{
+                int i = 0;
+                for (Character c : s.toCharArray()){
+
+                    if(!VowelUtils.isVowel(c)){
+                        sb.append(c);
+                        sb.delete(0,1);
+                        i++;
+                        if(i==s.length()-1){
+                            temp = sb.append("ay").toString();
+                            newList.add(temp);
+                            break;
                         }
-                        else{
-                            newList.add(sb.append("ay").toString());
-                        }
+                    }
+                    else {
+                        temp = sb.append("ay").toString();
+                        newList.add(temp);
+                        break;
                     }
                 }
             }
+
+
+
+
+            sb.setLength(0);
+        }
         String result = String.join(" ", newList);
-
-
-
         return result;
     }
+
+    public static void main(String[] args) {
+        PigLatinGenerator p = new PigLatinGenerator();
+        String input = "CCCC";
+        p.translate(input);
+    }
+
 }
