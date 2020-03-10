@@ -52,10 +52,6 @@ public class PigLatinGenerator {
         return result;
     }
 
-    public static void main(String[] args) {
-        PigLatinGenerator p = new PigLatinGenerator();
-        String input = "CCCC";
-        p.translate(input);
-    }
+
 
 }
