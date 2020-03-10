@@ -1,9 +1,6 @@
 package rocks.zipcode.io.quiz3.fundamentals;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  * @author leon on 09/12/2018.
@@ -25,33 +22,22 @@ public class StringUtils {
     }
 
     public static String[] getAllSubStrings(String string) {
-       List<Character> clist = new ArrayList<>();
-       List<String> sList = new ArrayList<>();
-       for (char c : string.toCharArray()){
-           clist.add(c);
-       }
-
-       int numOfCharsToAdd = 1;
-        int newLen = clist.size();
-        while(numOfCharsToAdd < newLen-1){
-            for(int i=0;i<numOfCharsToAdd;i++){
-                sList.add(clist.get(i).toString());
-                numOfCharsToAdd++;
+        Set<String> list = new LinkedHashSet<>();
+        for (int i = 0; i < string.length(); i++) {
+            for (int j = i+1; j < string.length()+1; j++) {
+                list.add(string.substring(i,j));
             }
         }
-
-        for(String s : sList){
-            System.out.println(s);
-        }
-        return null;
+        String[] result = list.stream().toArray(String[]::new);
+        return result;
     }
 
     public static Integer getNumberOfSubStrings(String input){
-        return null;
+
+        List<String> list = Arrays.asList(getAllSubStrings(input));
+        int count = list.size();
+        return count;
     }
 
-    public static void main(String[] args) {
-        String input = "Hello";
-        StringUtils.getAllSubStrings(input);
-    }
+
 }
