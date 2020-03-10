@@ -43,9 +43,6 @@ public class PigLatinGenerator {
                 }
             }
 
-
-
-
             sb.setLength(0);
         }
         String result = String.join(" ", newList);
